@@ -1,0 +1,2175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pancham Singh Kirana Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-color: #f4f6f8;
+    --text-color: #333;
+    --header-bg: linear-gradient(to right, #ff9900, #ffcc00);
+    --footer-bg: #222;
+    --footer-color: #bbb;
+    --scrolling-bg: #f0c14b;
+    --scrolling-text: #000;
+    --timings-bg: #ffffff;
+    --timings-text: #333;
+    --timings-border: #e0e0e0;
+    --glow-primary: rgba(255, 153, 0, 0.6);
+    --glow-secondary: rgba(255, 204, 0, 0.4);
+    --glass-effect: rgba(255, 255, 255, 0.15);
+  }
+  
+  body.dark {
+    --bg-color: #121212;
+    --text-color: #f1f1f1;
+    --header-bg: #1e1e1e;
+    --footer-bg: #0e0e0e;
+    --footer-color: #aaa;
+    --scrolling-bg: #333;
+    --scrolling-text: #fff;
+    --timings-bg: #1e1e1e;
+    --timings-text: #f1f1f1;
+    --timings-border: #333;
+    --glow-primary: rgba(255, 255, 255, 0.3);
+    --glow-secondary: rgba(200, 200, 200, 0.2);
+    --glass-effect: rgba(255, 255, 255, 0.1);
+  }
+  
+  body.portal-version {
+    --bg-color: #000;
+    --text-color: #00f7ff;
+    --header-bg: #000;
+    --footer-bg: #000;
+    --footer-color: #00f7ff;
+    --scrolling-bg: #000;
+    --scrolling-text: #00f7ff;
+    --timings-bg: rgba(0,0,0,0.7);
+    --timings-text: #00f7ff;
+    --timings-border: #00f7ff;
+    --glow-primary: rgba(0, 247, 255, 0.8);
+    --glow-secondary: rgba(0, 247, 255, 0.4);
+    --glass-effect: rgba(0, 247, 255, 0.15);
+  }
+  
+  /* TIME TRAVEL STYLES */
+  body.era-2050s {
+    --bg-color: #0a0a1a;
+    --text-color: #00f7ff;
+    --header-bg: linear-gradient(90deg, #0f0c29, #302b63, #24243e);
+    --footer-bg: #0a0a1a;
+    --footer-color: #a0a0ff;
+    --scrolling-bg: #0f0c29;
+    --scrolling-text: #00f7ff;
+    --timings-bg: rgba(10, 10, 26, 0.8);
+    --timings-text: #00f7ff;
+    --timings-border: #5d5dff;
+    --glow-primary: rgba(0, 247, 255, 0.9);
+    --glow-secondary: rgba(93, 93, 255, 0.6);
+    --glass-effect: rgba(0, 247, 255, 0.2);
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  body.era-2040s {
+    --bg-color: #ffc0cb;
+    --text-color: #000;
+    --header-bg: linear-gradient(to right, #ff00ff, #00ffff);
+    --footer-bg: #000;
+    --footer-color: #fff;
+    --scrolling-bg: #ffff00;
+    --scrolling-text: #000;
+    --timings-bg: rgba(255,255,255,0.8);
+    --timings-text: #000;
+    --timings-border: #ff00ff;
+    --glow-primary: rgba(255, 0, 255, 0.7);
+    --glow-secondary: rgba(0, 255, 255, 0.5);
+    --glass-effect: rgba(255, 255, 255, 0.25);
+    font-family: 'Comic Sans MS', cursive;
+  }
+  
+  body.era-2030s {
+    --bg-color: #e6e6fa;
+    --text-color: #333;
+    --header-bg: linear-gradient(to right, #3366ff, #00ccff);
+    --footer-bg: #333;
+    --footer-color: #fff;
+    --scrolling-bg: #ff9900;
+    --scrolling-text: #000;
+    --timings-bg: rgba(255,255,255,0.9);
+    --timings-text: #333;
+    --timings-border: #3366ff;
+    --glow-primary: rgba(51, 102, 255, 0.7);
+    --glow-secondary: rgba(0, 204, 255, 0.5);
+    --glass-effect: rgba(255, 255, 255, 0.2);
+    font-family: 'Verdana', sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.5s ease-out;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+  }
+  
+  /* ULTRA GLOSSY BACKGROUND EFFECT */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 20% 80%, var(--glow-primary) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, var(--glow-secondary) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, var(--glass-effect) 0%, transparent 50%);
+    filter: blur(40px);
+    opacity: 0.4;
+    z-index: -1;
+    pointer-events: none;
+    transition: all 0.8s ease;
+  }
+  
+  /* ENHANCED GLOSSY CONTAINERS */
+  .glossy-container {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(255, 255, 255, 0.15) 100%
+    );
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.1),
+      0 0 60px var(--glow-primary),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .glossy-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(255, 255, 255, 0.8), 
+      transparent);
+    z-index: 1;
+  }
+  
+  /* SUPER GLOSSY EYES CONTAINER */
+  .eyes-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 10px;
+    margin-bottom: 5px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1000;
+  }
+  
+  .eyes-box {
+    background: linear-gradient(145deg, #ff9900, #ffcc00, #ff9900);
+    border-radius: 50px;
+    padding: 12px 30px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    min-width: 180px;
+    justify-content: center;
+    box-shadow: 
+      0 10px 40px rgba(255, 153, 0, 0.5),
+      0 0 80px rgba(255, 204, 0, 0.4),
+      inset 0 2px 0 rgba(255, 255, 255, 0.6),
+      inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+  }
+  
+  .eyes-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transition: left 0.7s;
+  }
+  
+  .eyes-box:hover::before {
+    left: 100%;
+  }
+  
+  .eyes-box::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border-radius: 48px;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.1),
+      transparent 40%,
+      rgba(0, 0, 0, 0.05)
+    );
+    pointer-events: none;
+  }
+  
+  /* ULTRA GLOSSY EYES */
+  .eye-container {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .eye {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 
+      0 5px 20px rgba(0, 0, 0, 0.3),
+      0 0 25px rgba(255, 255, 255, 0.5),
+      inset 0 2px 2px rgba(255, 255, 255, 0.8),
+      inset 0 -2px 2px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+  
+  .iris {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: radial-gradient(circle at 30% 30%, #5a8ec9, #2a4a6e);
+    border-radius: 50%;
+    z-index: 1;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 
+      inset 0 2px 4px rgba(255, 255, 255, 0.3),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.4),
+      0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .pupil {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: radial-gradient(circle at 30% 30%, #1a3a5a, #0a1a2a);
+    border-radius: 50%;
+    z-index: 2;
+    transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    box-shadow: 
+      inset 0 2px 4px rgba(255, 255, 255, 0.2),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.5),
+      0 0 8px rgba(0, 0, 0, 0.4);
+  }
+  
+  .pupil::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5));
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    z-index: 3;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+  }
+  
+  .eyelid {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(to bottom, #f8f8f8, #e8e8e8);
+    border-radius: 50%;
+    z-index: 3;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.2s ease-out;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.6);
+  }
+  
+  @keyframes shine {
+    0% { transform: rotate(30deg) translateX(-100%); }
+    100% { transform: rotate(30deg) translateX(100%); }
+  }
+  
+  /* TIME TRAVEL CONTROLS - SUPER GLOSSY */
+  .time-travel-container {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    padding: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 5px;
+  }
+  
+  .time-travel-btn {
+    background: linear-gradient(145deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6));
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.3s;
+    will-change: transform;
+    flex: 1;
+    min-width: 80px;
+    max-width: 100px;
+    text-align: center;
+    box-shadow: 
+      0 5px 15px rgba(0,0,0,0.3),
+      0 0 20px rgba(255,255,255,0.2),
+      inset 0 1px 0 rgba(255,255,255,0.3);
+    backdrop-filter: blur(5px);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .time-travel-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    transition: left 0.5s;
+  }
+  
+  .time-travel-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 
+      0 0 15px white,
+      0 0 30px rgba(255,255,255,0.4),
+      inset 0 1px 0 rgba(255,255,255,0.5);
+  }
+  
+  .time-travel-btn:hover::before {
+    left: 100%;
+  }
+  
+  /* SUPER GLOSSY SECTIONS */
+  .hero {
+    text-align: center;
+    padding: 30px 15px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .hero img {
+    width: 120px; /* Original size */
+    border-radius: 50%;
+    margin-bottom: 15px;
+    transition: all .3s ease;
+    box-shadow: 
+      0 10px 30px rgba(0,0,0,0.2),
+      0 0 50px var(--glow-primary),
+      inset 0 2px 0 rgba(255, 255, 255, 0.6),
+      inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(5px);
+  }
+  
+  /* GLOSSY BUTTONS */
+  .button {
+    background: linear-gradient(145deg, #28a745, #20c997);
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 
+      0 6px 20px rgba(40, 167, 69, 0.4),
+      0 0 30px rgba(40, 167, 69, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transition: left 0.5s;
+  }
+  
+  .button:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 10px 25px rgba(40, 167, 69, 0.6),
+      0 0 40px rgba(40, 167, 69, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+  
+  .button:hover::before {
+    left: 100%;
+  }
+  
+  /* ANIMATED PHONE ICON - VIBRATING EFFECT */
+  .phone-icon {
+    display: inline-block;
+    animation: vibrate 0.3s infinite alternate;
+    transform-origin: center;
+    text-shadow: 
+      0 0 10px rgba(255, 255, 255, 0.8),
+      0 0 20px rgba(255, 255, 255, 0.6);
+  }
+  
+  @keyframes vibrate {
+    0% { 
+      transform: rotate(-5deg) scale(1.1);
+      text-shadow: 
+        0 0 12px rgba(255, 255, 255, 0.9),
+        0 0 24px rgba(255, 255, 255, 0.7),
+        0 0 36px rgba(255, 255, 255, 0.5);
+    }
+    25% { 
+      transform: rotate(5deg) scale(1.15);
+      text-shadow: 
+        0 0 15px rgba(255, 255, 255, 1),
+        0 0 30px rgba(255, 255, 255, 0.8),
+        0 0 45px rgba(255, 255, 255, 0.6);
+    }
+    50% { 
+      transform: rotate(-3deg) scale(1.12);
+      text-shadow: 
+        0 0 13px rgba(255, 255, 255, 0.95),
+        0 0 26px rgba(255, 255, 255, 0.75),
+        0 0 39px rgba(255, 255, 255, 0.55);
+    }
+    75% { 
+      transform: rotate(3deg) scale(1.13);
+      text-shadow: 
+        0 0 14px rgba(255, 255, 255, 0.98),
+        0 0 28px rgba(255, 255, 255, 0.78),
+        0 0 42px rgba(255, 255, 255, 0.58);
+    }
+    100% { 
+      transform: rotate(0deg) scale(1.1);
+      text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.8),
+        0 0 20px rgba(255, 255, 255, 0.6),
+        0 0 30px rgba(255, 255, 255, 0.4);
+    }
+  }
+  
+  /* GLOSSY SECTIONS */
+  .section {
+    padding: 30px 15px;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+    margin: 20px auto;
+    border-radius: 15px;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.05)
+    );
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+      0 10px 30px rgba(0,0,0,0.1),
+      0 0 50px var(--glow-secondary),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    max-width: 800px;
+  }
+  
+  /* GLOSSY HEADER */
+  header {
+    background: var(--header-bg);
+    padding: 15px 0;
+    text-align: center;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    position: relative;
+    box-shadow: 
+      0 5px 20px rgba(0,0,0,0.2),
+      0 0 40px var(--glow-primary);
+    backdrop-filter: blur(5px);
+  }
+  
+  /* GLOSSY TITLES */
+  .title {
+    font-size: 24px;
+    text-align: center;
+    margin: 20px 0;
+    transition: all 0.5s ease;
+    text-shadow: 
+      0 2px 4px rgba(0,0,0,0.3),
+      0 0 10px var(--glow-primary);
+    padding: 10px 20px;
+    border-radius: 10px;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.05)
+    );
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    display: inline-block;
+  }
+  
+  /* GLOSSY MAP */
+  .map {
+    width: 100%;
+    height: 250px;
+    border: none;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    box-shadow: 
+      0 5px 20px rgba(0,0,0,0.2),
+      0 0 30px var(--glow-secondary);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  /* GLOSSY FOOTER */
+  footer {
+    background: var(--footer-bg);
+    color: var(--footer-color);
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    box-shadow: 
+      0 -5px 20px rgba(0,0,0,0.2),
+      0 0 30px var(--glow-secondary);
+    backdrop-filter: blur(5px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* SUPER GLOSSY DATETIME */
+  .datetime-container {
+    font-family: 'Segoe UI', sans-serif;
+    color: #0a3d62;
+    font-size: 22px;
+    font-weight: 500;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #f1f6ff, #e6f0ff);
+    border-radius: 15px;
+    display: inline-block;
+    margin: 10px;
+    transition: all 0.5s ease;
+    box-shadow: 
+      0 8px 25px rgba(0,0,0,0.15),
+      0 0 30px rgba(0, 123, 255, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(5px);
+  }
+  
+  /* GLOSSY STORE TIMINGS */
+  .store-timings {
+    padding: 30px 20px;
+    text-align: center;
+    margin: 30px auto;
+    max-width: 800px;
+    border-radius: 20px;
+    transition: all 0.5s ease-out;
+    background: var(--timings-bg);
+    color: var(--timings-text);
+    border: 1px solid var(--timings-border);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.05)
+    );
+    backdrop-filter: blur(10px);
+    box-shadow: 
+      0 15px 35px rgba(0,0,0,0.2),
+      0 0 60px var(--glow-secondary),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  }
+  
+  /* ULTRA GLOSSY RATING CONTAINER - FIXED SIZE */
+  .rating-container {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+    border-radius: 20px;
+    padding: 30px 25px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 600px;
+    min-height: 320px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 
+      0 15px 35px rgba(0, 0, 0, 0.2),
+      0 0 50px rgba(255, 204, 0, 0.4),
+      inset 0 2px 0 rgba(255, 255, 255, 0.6),
+      inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .rating-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    transition: left 0.7s;
+  }
+  
+  .rating-container:hover::before {
+    left: 100%;
+  }
+  
+  /* GLOSSY STARS - FIXED (NOT BLURRY) */
+  .stars-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 25px 0;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .star {
+    font-size: 42px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #ddd;
+    position: relative;
+    text-shadow: 
+      0 2px 4px rgba(0,0,0,0.2),
+      0 0 8px rgba(255, 255, 255, 0.3);
+    filter: none;
+    font-weight: normal;
+    line-height: 1;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .star:hover {
+    transform: scale(1.15);
+    text-shadow: 
+      0 0 20px rgba(255, 204, 0, 0.8),
+      0 0 30px rgba(255, 153, 0, 0.6);
+  }
+  
+  .star.active {
+    color: #ffcc00;
+    text-shadow: 
+      0 0 15px #ffcc00,
+      0 0 25px #ff9900;
+    animation: pulse 2s infinite;
+  }
+  
+  /* SUPER GLOSSY MODALS - FIXED SIZE TO FIT INSIDE CONTAINER */
+  .modal-on-stars {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border-radius: 15px;
+    padding: 25px 20px;
+    z-index: 10002;
+    display: none;
+    animation: popIn 0.3s ease-out;
+    text-align: center;
+    backdrop-filter: blur(15px);
+    box-shadow: 
+      0 15px 40px rgba(0, 0, 0, 0.4),
+      0 0 60px var(--glow-primary),
+      inset 0 2px 0 rgba(255, 255, 255, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  /* Ensure modals are visible and properly sized */
+  .modal-on-stars.active {
+    display: flex;
+  }
+  
+  /* Hide stars container and description when modal is active */
+  .modal-on-stars.active ~ .stars-container,
+  .modal-on-stars.active ~ p {
+    display: none;
+  }
+  
+  @keyframes popIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* GLOSSY SCROLLING TEXT */
+  .scrolling-text,
+  .scrolling-text-top {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+    background-color: var(--scrolling-bg);
+    color: var(--scrolling-text);
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 0;
+    position: relative;
+    box-shadow: 
+      0 2px 15px rgba(0,0,0,0.2),
+      0 0 25px var(--glow-primary);
+    backdrop-filter: blur(5px);
+  }
+  
+  .scrolling-text span,
+  .scrolling-text-top span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: scroll-left 15s linear infinite;
+    position: relative;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+  
+  @keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+  
+  /* GLOSSY TOGGLE */
+  .toggle-container {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: 999;
+  }
+  
+  .toggle-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    width: 60px;
+    height: 30px;
+    cursor: pointer;
+    position: relative;
+    transition: background .3s ease;
+    box-shadow: 
+      0 4px 15px rgba(0,0,0,.2),
+      0 0 15px rgba(255, 215, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(5px);
+  }
+  
+  .toggle-circle {
+    width: 26px;
+    height: 26px;
+    background: radial-gradient(circle at 30% 30%, #ffd700, #ffaa00);
+    border-radius: 50%;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    transition: transform .3s ease;
+    box-shadow: 
+      0 3px 10px rgba(0,0,0,0.3),
+      0 0 10px rgba(255, 215, 0, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+  
+  body.dark .toggle-circle {
+    background: radial-gradient(circle at 30% 30%, #333, #111);
+    transform: translateX(30px);
+    box-shadow: 
+      0 3px 10px rgba(0,0,0,0.4),
+      0 0 10px rgba(255, 255, 255, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  }
+  
+  /* GLOSSY TABLE */
+  table {
+    margin: 0 auto;
+    width: 90%;
+    max-width: 500px;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 
+      0 5px 20px rgba(0,0,0,0.1),
+      0 0 25px var(--glow-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+  }
+  
+  table, th, td {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px;
+  }
+  
+  th {
+    background: linear-gradient(to bottom, rgba(255,255,255,0.1), transparent);
+    color: var(--text-color);
+  }
+  
+  td {
+    background: rgba(255,255,255,0.05);
+  }
+  
+  /* SUPER GLOSSY MODAL BUTTON - FIXED TO STAY INSIDE BOX */
+  .modal-button {
+    background: linear-gradient(145deg, #28a745, #20c997);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 20px;
+    transition: all 0.3s;
+    box-shadow: 
+      0 8px 25px rgba(40, 167, 69, 0.5),
+      0 0 35px rgba(40, 167, 69, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+    width: auto;
+    max-width: 90%;
+    word-wrap: break-word;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.4;
+    min-width: 180px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  
+  .modal-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s;
+  }
+  
+  .modal-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+      0 12px 30px rgba(40, 167, 69, 0.7),
+      0 0 45px rgba(40, 167, 69, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+  
+  .modal-button:hover::before {
+    left: 100%;
+  }
+  
+  /* Special styling for the "Try the 5th Star" button - FIXED TO BE VISIBLE */
+  #funny-modal-stars .modal-button {
+    background: linear-gradient(145deg, #ff6b6b, #ffd93d);
+    font-size: 15px;
+    padding: 12px 24px;
+    margin-top: 15px;
+    max-width: 90%;
+    min-width: 160px;
+    box-shadow: 
+      0 8px 25px rgba(255, 107, 107, 0.5),
+      0 0 35px rgba(255, 217, 61, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  #funny-modal-stars .modal-button:hover {
+    box-shadow: 
+      0 12px 30px rgba(255, 107, 107, 0.7),
+      0 0 45px rgba(255, 217, 61, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+  
+  /* ENHANCED GLOW ANIMATION */
+  @keyframes pulse {
+    0% { 
+      transform: scale(1); 
+      text-shadow: 
+        0 0 12px #ffcc00,
+        0 0 20px #ff9900;
+    }
+    50% { 
+      transform: scale(1.1); 
+      text-shadow: 
+        0 0 18px #ffcc00,
+        0 0 30px #ff9900,
+        0 0 40px rgba(255, 153, 0, 0.7);
+    }
+    100% { 
+      transform: scale(1); 
+      text-shadow: 
+        0 0 12px #ffcc00,
+        0 0 20px #ff9900;
+    }
+  }
+  
+  /* Grid overlay */
+  .grid-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      linear-gradient(rgba(0, 247, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 247, 255, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+  }
+
+  body.era-2050s .grid-overlay {
+    opacity: 0.5;
+  }
+
+  /* Scanner animation - THICKNESS INCREASED 4x */
+  .scanner-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  
+  .scanner-line {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 12vh; /* Increased from 3vh to 12vh (4x thickness) */
+    background: linear-gradient(to bottom, rgba(0,247,255,.1), #00f7ff, rgba(0,247,255,.1));
+    opacity: 0;
+    filter: blur(1px);
+    box-shadow: 0 0 10px #00f7ff,
+                0 0 30px rgba(0, 247, 255, 0.8);
+    transform: translateY(-100%);
+    transition: opacity 0.3s ease;
+    will-change: transform;
+  }
+  
+  .scanner-line.open {
+    animation: scan-down 1.2s cubic-bezier(.65,0,.35,1) forwards;
+  }
+  
+  .scanner-line.close {
+    animation: scan-up 1.2s cubic-bezier(.65,0,.35,1) forwards;
+  }
+  
+  @keyframes scan-down {
+    0% { transform: translateY(-100%); opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 1; }
+  }
+  
+  @keyframes scan-up {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-100%); opacity: 1; }
+  }
+
+  .close-portal {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(145deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6));
+    border: 2px solid #00f7ff;
+    color: #00f7ff;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    z-index: 10002;
+    opacity: 0;
+    border-radius: 5px;
+    display: none;
+    transition: opacity .4s ease;
+    box-shadow: 
+      0 5px 20px rgba(0,0,0,0.3),
+      0 0 25px rgba(0, 247, 255, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+  }
+  
+  .close-portal:hover {
+    box-shadow: 
+      0 5px 25px rgba(0,0,0,0.4),
+      0 0 35px rgba(0, 247, 255, 0.7),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .modal-on-stars {
+      padding: 20px 15px;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+    }
+    .rating-container {
+      padding: 25px 20px;
+      max-width: 95%;
+      min-height: 300px;
+    }
+    .star {
+      font-size: 36px;
+    }
+    .eyes-box {
+      padding: 10px 20px;
+      min-width: 160px;
+    }
+    .eye-container {
+      width: 40px;
+      height: 40px;
+    }
+    .eye {
+      width: 35px;
+      height: 35px;
+    }
+    .iris {
+      width: 24px;
+      height: 24px;
+    }
+    .pupil {
+      width: 12px;
+      height: 12px;
+    }
+    .modal-button {
+      padding: 10px 18px;
+      font-size: 14px;
+      max-width: 85%;
+      min-width: 150px;
+    }
+    #funny-modal-stars .modal-button {
+      padding: 10px 18px;
+      font-size: 14px;
+      min-width: 140px;
+      max-width: 85%;
+    }
+    .phone-icon {
+      animation: vibrate 0.4s infinite alternate;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .modal-button {
+      padding: 10px 16px;
+      font-size: 13px;
+      min-width: 140px;
+    }
+    #funny-modal-stars .modal-button {
+      padding: 10px 16px;
+      font-size: 13px;
+      min-width: 130px;
+    }
+    .phone-icon {
+      animation: vibrate 0.5s infinite alternate;
+    }
+  }
+
+  body.dark .modal-on-stars {
+    background: linear-gradient(145deg, rgba(50, 50, 50, 0.95), rgba(30, 30, 30, 0.85));
+    color: #fff;
+  }
+
+  body.portal-version .modal-on-stars {
+    background: linear-gradient(145deg, rgba(0, 0, 0, 0.95), rgba(0, 50, 50, 0.85));
+    border: 2px solid #00f7ff;
+    color: #00f7ff;
+  }
+
+  body.era-2050s .modal-on-stars {
+    background: linear-gradient(145deg, rgba(10, 10, 26, 0.95), rgba(5, 5, 13, 0.85));
+    border: 2px solid #5d5dff;
+    color: #00f7ff;
+  }
+
+  /* Close modal button - positioned properly */
+  .close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+    z-index: 10003;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+  }
+
+  .close-modal:hover {
+    color: #ff0000;
+    transform: scale(1.2);
+    text-shadow: 0 0 20px #ff0000;
+    background: rgba(255, 0, 0, 0.1);
+  }
+
+  /* Rating text styling */
+  .rating-container p {
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-shadow: 0 0 5px rgba(255,255,255,0.5);
+    text-align: center;
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  /* PREMIUM BEAUTIFUL SPRINKLES - IMPROVED */
+  .celebration {
+    position: relative;
+    height: 80px;
+    margin: 15px 0;
+    overflow: hidden;
+  }
+
+  .confetti {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    opacity: 0;
+    animation: confetti-fall 3s ease-in forwards;
+    box-shadow: 0 0 8px currentColor,
+                0 0 15px rgba(255,255,255,0.5);
+    filter: drop-shadow(0 0 3px rgba(255,255,255,0.8));
+    z-index: 1;
+  }
+
+  /* Confetti styles */
+  .confetti:nth-child(1) { 
+    left: 10%; 
+    background: linear-gradient(45deg, #ff0000, #ff6666);
+    animation-delay: 0.1s;
+    animation-duration: 2.5s;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  }
+  .confetti:nth-child(2) { 
+    left: 30%; 
+    background: linear-gradient(45deg, #00ff00, #66ff66);
+    animation-delay: 0.3s;
+    animation-duration: 2.8s;
+    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+  }
+  .confetti:nth-child(3) { 
+    left: 50%; 
+    background: linear-gradient(45deg, #0000ff, #6666ff);
+    animation-delay: 0.5s;
+    animation-duration: 3.1s;
+    border-radius: 50%;
+  }
+  .confetti:nth-child(4) { 
+    left: 70%; 
+    background: linear-gradient(45deg, #ffff00, #ffff66);
+    animation-delay: 0.7s;
+    animation-duration: 2.7s;
+    clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
+  }
+  .confetti:nth-child(5) { 
+    left: 90%; 
+    background: linear-gradient(45deg, #ff00ff, #ff66ff);
+    animation-delay: 0.9s;
+    animation-duration: 3.2s;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  }
+  .confetti:nth-child(6) { 
+    left: 20%; 
+    background: linear-gradient(45deg, #00ffff, #66ffff);
+    animation-delay: 1.1s;
+    animation-duration: 2.9s;
+    border-radius: 50%;
+  }
+  .confetti:nth-child(7) { 
+    left: 40%; 
+    background: linear-gradient(45deg, #ff9900, #ffcc66);
+    animation-delay: 1.3s;
+    animation-duration: 3s;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  }
+  .confetti:nth-child(8) { 
+    left: 60%; 
+    background: linear-gradient(45deg, #9900ff, #cc66ff);
+    animation-delay: 1.5s;
+    animation-duration: 2.6s;
+    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+  }
+  .confetti:nth-child(9) { 
+    left: 80%; 
+    background: linear-gradient(45deg, #ff0066, #ff6699);
+    animation-delay: 1.7s;
+    animation-duration: 3.3s;
+    border-radius: 50%;
+  }
+  .confetti:nth-child(10) { 
+    left: 15%; 
+    background: linear-gradient(45deg, #66ff00, #99ff66);
+    animation-delay: 1.9s;
+    animation-duration: 2.8s;
+    clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
+  }
+
+  /* Additional confetti */
+  .confetti:nth-child(11) {
+    left: 5%;
+    background: linear-gradient(45deg, #ff3333, #ff9999);
+    animation-delay: 0.2s;
+    animation-duration: 3.1s;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  }
+
+  .confetti:nth-child(12) {
+    left: 25%;
+    background: linear-gradient(45deg, #33ff33, #99ff99);
+    animation-delay: 0.4s;
+    animation-duration: 2.9s;
+    border-radius: 50%;
+  }
+
+  .confetti:nth-child(13) {
+    left: 45%;
+    background: linear-gradient(45deg, #3333ff, #9999ff);
+    animation-delay: 0.6s;
+    animation-duration: 3.2s;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  }
+
+  .confetti:nth-child(14) {
+    left: 65%;
+    background: linear-gradient(45deg, #ffff33, #ffff99);
+    animation-delay: 0.8s;
+    animation-duration: 2.7s;
+    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+  }
+
+  .confetti:nth-child(15) {
+    left: 85%;
+    background: linear-gradient(45deg, #ff33ff, #ff99ff);
+    animation-delay: 1s;
+    animation-duration: 3s;
+    border-radius: 50%;
+  }
+
+  @keyframes confetti-fall {
+    0% { 
+      transform: translateY(-100px) rotate(0deg) scale(0.8); 
+      opacity: 1; 
+    }
+    50% {
+      transform: translateY(40px) rotate(180deg) scale(1.2);
+    }
+    80% { 
+      opacity: 1; 
+    }
+    100% { 
+      transform: translateY(80px) rotate(360deg) scale(1); 
+      opacity: 0; 
+    }
+  }
+
+  /* PREMIUM FUNNY MESSAGE MODAL */
+  .funny-modal .modal-on-stars {
+    background: linear-gradient(145deg, rgba(102, 126, 234, 0.95), rgba(118, 75, 162, 0.85));
+    color: white;
+    border: 3px solid rgba(255, 215, 0, 0.8);
+  }
+
+  .funny-modal .modal-on-stars::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.15), transparent);
+    transform: rotate(45deg);
+    animation: shine 3s linear infinite;
+  }
+
+  body.dark .funny-modal .modal-on-stars {
+    background: linear-gradient(145deg, rgba(255, 107, 107, 0.95), rgba(255, 217, 61, 0.85));
+    color: #000;
+  }
+
+  body.portal-version .funny-modal .modal-on-stars {
+    background: linear-gradient(145deg, rgba(0, 247, 255, 0.95), rgba(93, 93, 255, 0.85));
+    border: 3px solid rgba(0, 247, 255, 0.8);
+    color: #000;
+  }
+
+  body.era-2050s .funny-modal .modal-on-stars {
+    background: linear-gradient(145deg, rgba(255, 0, 255, 0.95), rgba(93, 93, 255, 0.85));
+    border: 3px solid rgba(93, 93, 255, 0.8);
+    color: #000;
+  }
+
+  .funny-emoji {
+    font-size: 50px;
+    margin: 10px 0;
+    animation: bounce 2s infinite;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+    text-shadow: 0 0 20px rgba(255,255,255,0.8);
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-15px);}
+    60% {transform: translateY(-7px);}
+  }
+
+  .funny-modal h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3),
+                 0 0 15px rgba(255,255,255,0.7);
+  }
+
+  .funny-modal p {
+    font-size: 18px;
+    margin: 10px 0;
+    font-weight: 500;
+    text-shadow: 0 0 8px rgba(255,255,255,0.5);
+  }
+
+  /* PREMIUM THANK YOU MODAL */
+  .greeting-modal .modal-on-stars {
+    background: linear-gradient(145deg, rgba(255, 204, 0, 0.95), rgba(255, 153, 0, 0.85));
+    color: #000;
+    border: 3px solid rgba(255, 215, 0, 0.8);
+  }
+
+  .greeting-modal .modal-on-stars::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.25), transparent);
+    transform: rotate(45deg);
+    animation: shine 3s linear infinite;
+  }
+
+  .greeting-modal h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2),
+                 0 0 20px rgba(255,255,255,0.8);
+  }
+
+  .greeting-modal p {
+    font-size: 20px;
+    margin: 12px 0;
+    font-weight: 500;
+    text-shadow: 0 0 10px rgba(255,255,255,0.6);
+  }
+
+  /* SPRINKLES ON TEXT EFFECT */
+  .sprinkle-text {
+    position: relative;
+    display: inline-block;
+  }
+
+  .sprinkle-text::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .text-confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    opacity: 0;
+    animation: text-confetti-fall 2s ease-in forwards;
+    box-shadow: 0 0 5px currentColor,
+                0 0 10px rgba(255,255,255,0.5);
+    filter: drop-shadow(0 0 2px rgba(255,255,255,0.8));
+    z-index: 3;
+  }
+
+  @keyframes text-confetti-fall {
+    0% { 
+      transform: translateY(-30px) rotate(0deg) scale(0.8); 
+      opacity: 1; 
+    }
+    50% {
+      transform: translateY(15px) rotate(180deg) scale(1.2);
+    }
+    80% { 
+      opacity: 1; 
+    }
+    100% { 
+      transform: translateY(30px) rotate(360deg) scale(1); 
+      opacity: 0; 
+    }
+  }
+
+  /* ERA-SPECIFIC ENHANCEMENTS */
+  body.era-2050s .hero,
+  body.era-2050s .section,
+  body.era-2050s .store-timings {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+
+  /* Holographic effect for 2050s */
+  .holographic-effect {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .holographic-effect::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      to bottom right,
+      rgba(0, 247, 255, 0.05),
+      rgba(93, 93, 255, 0.15),
+      rgba(0, 247, 255, 0.05)
+    );
+    transform: rotate(30deg);
+    animation: hologram 8s linear infinite;
+    z-index: -1;
+  }
+
+  @keyframes hologram {
+    0% { transform: rotate(30deg) translateY(0); }
+    100% { transform: rotate(30deg) translateY(-100%); }
+  }
+</style>
+</head>
+<body>
+<!-- Add grid overlay -->
+<div class="grid-overlay"></div>
+
+<!-- Time Travel Controls -->
+<div class="time-travel-container">
+  <button class="time-travel-btn" onclick="setEra('modern')">Present Day</button>
+  <button class="time-travel-btn" onclick="setEra('2030s')">2030 Mode</button>
+  <button class="time-travel-btn" onclick="setEra('2040s')">2040 Mode</button>
+  <button class="time-travel-btn" onclick="setEra('2050s')">2050 Mode</button>
+</div>
+
+<!-- TWO CUTE, INNOCENT EYES IN A SINGLE BOX -->
+<div class="eyes-container">
+  <div class="eyes-box">
+    <div class="eye-container" id="eye-container-1">
+      <div class="eye">
+        <div class="iris">
+          <div class="pupil"></div>
+        </div>
+        <div class="eyelid"></div>
+        <div class="eyelash"></div>
+      </div>
+    </div>
+    
+    <div class="eye-container" id="eye-container-2">
+      <div class="eye">
+        <div class="iris">
+          <div class="pupil"></div>
+        </div>
+        <div class="eyelid"></div>
+        <div class="eyelash"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="scrolling-text-top"><span>Welcome to Pancham Singh Kirana Store. Contact - 9897057448</span>
+  <div class="toggle-container">
+    <button id="theme-toggle" class="toggle-btn">
+      <div class="toggle-circle"></div>
+    </button>
+  </div>
+</div>
+<div class="scanner-overlay"><div class="scanner-line"></div></div>
+<button class="close-portal">✕ Close Portal</button>
+
+<div class="datetime-container">
+  <span class="clock-icon">🕒</span>
+  <span id="datetime"></span>
+</div>
+<h1 class="title">Hello World!</h1>
+<p id="current-time"></p>
+<header>
+  <div class="scrolling-text">
+    <span>Welcome to Pancham Singh Kirana Store.</span>
+  </div>
+</header>
+<div class="hero">
+  <img src="https://i.postimg.cc/ht82GLsJ/file-00000000c06c61f8bb0dcf92ffb60693.png" alt="Shop Logo">
+  <h1>Pancham Singh Kirana Store</h1>
+  <p>Your trusted local grocery partner in Firozabad</p>
+  <a href="tel:9897057448" class="button"><span class="phone-icon">📞</span> Call Now for product inquiry</a>
+</div>
+<div class="section">
+  <h2>⭐ What Our Customers Say</h2>
+  <p>"Best kirana store in town! Great service." – Rahul</p>
+  <p>"Affordable prices and polite owner." – Sachin</p>
+</div>
+<div class="section">
+  <h2>📍 Find Us</h2>
+  <iframe class="map" src="https://www.google.com/maps?q=pancham singh dukandar jhalkari nagar jalesar road Firozabad,+Uttar+Pradesh,+India&output=embed"></iframe>
+</div>
+
+<!-- 5-Star Rating System - FIXED -->
+<div class="section">
+  <h2>⭐ Rate Our Store</h2>
+  <div class="rating-container rating-modal-container">
+    <p>How was your experience at our store?</p>
+    <div class="stars-container">
+      <div class="star" data-value="1">☆</div>
+      <div class="star" data-value="2">☆</div>
+      <div class="star" data-value="3">☆</div>
+      <div class="star" data-value="4">☆</div>
+      <div class="star" data-value="5">☆</div>
+    </div>
+    
+    <!-- Modal that appears on stars and covers them - FIXED -->
+    <div id="greeting-modal-stars" class="modal-on-stars greeting-modal">
+      <span class="close-modal">&times;</span>
+      <h2 class="sprinkle-text">Thank You! 🎉</h2>
+      <div class="celebration">
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+      </div>
+      <p>Thank you for the 5-star rating! We truly appreciate your support.</p>
+      <button class="modal-button">Continue Exploring</button>
+    </div>
+    
+    <div id="funny-modal-stars" class="modal-on-stars funny-modal">
+      <span class="close-modal">&times;</span>
+      <div class="funny-emoji">😜</div>
+      <h2>Nice Try!</h2>
+      <p>You can only give us five star 😜</p>
+      <p>Cause we deserve it! 😤</p>
+      <button class="modal-button">Try the 5th Star!</button>
+    </div>
+  </div>
+</div>
+
+<!-- Store Timings Section -->
+<div class="store-timings">
+  <h2>🕒 Store Timings</h2>
+  <p>We're open <strong>every day</strong> of the week!</p>
+  <p>
+    Opening Hours: <strong>6:00 AM – 10:00 PM</strong><br>
+    Current Status: <span id="store-status" style="font-weight: bold;">Checking...</span>
+  </p>
+</div>
+
+<footer>© 2025 Pancham Singh Kirana Store. All rights reserved.</footer>
+
+<audio id="click-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-interface-click-1125.mp3" preload="auto"></audio>
+<audio id="portal-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-sci-fi-positive-interface-beep-257.mp3" preload="auto"></audio>
+<audio id="scan-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-sci-fi-scanner-beep-265.mp3" preload="auto"></audio>
+<audio id="time-travel-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-sci-fi-time-tunnel-360.mp3" preload="auto"></audio>
+<audio id="futuristic-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-sci-fi-positronic-wave-275.mp3" preload="auto"></audio>
+<audio id="star-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-winning-chimes-2015.mp3" preload="auto"></audio>
+<audio id="funny-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-funny-cartoon-jump-465.mp3" preload="auto"></audio>
+
+<script>
+  // IMPROVED Cute, Innocent Eye Animation Functionality for Two Eyes
+  function animateEyes() {
+    const eyes = [
+      {
+        pupil: document.querySelector('#eye-container-1 .pupil'),
+        eyelid: document.querySelector('#eye-container-1 .eyelid'),
+        eye: document.querySelector('#eye-container-1 .eye'),
+        iris: document.querySelector('#eye-container-1 .iris'),
+        container: document.querySelector('#eye-container-1')
+      },
+      {
+        pupil: document.querySelector('#eye-container-2 .pupil'),
+        eyelid: document.querySelector('#eye-container-2 .eyelid'),
+        eye: document.querySelector('#eye-container-2 .eye'),
+        iris: document.querySelector('#eye-container-2 .iris'),
+        container: document.querySelector('#eye-container-2')
+      }
+    ];
+    
+    let isFollowingTouch = false;
+    let touchTimeout = null;
+    
+    // Natural blink function with realistic timing - BOTH EYES BLINK TOGETHER
+    function randomBlink() {
+      // Quick blink (natural human blink) - both eyes together
+      eyes.forEach(eye => {
+        eye.eyelid.style.transform = 'scaleY(1)';
+      });
+      
+      setTimeout(() => {
+        eyes.forEach(eye => {
+          eye.eyelid.style.transform = 'scaleY(0)';
+        });
+      }, 150); // Natural blink duration
+      
+      // Schedule next blink randomly between 2-6 seconds (natural human blinking frequency)
+      setTimeout(randomBlink, Math.random() * 4000 + 2000);
+    }
+    
+    // Natural pupil movement function - BOTH EYES MOVE TOGETHER
+    function movePupils() {
+      // Don't move if currently following touch
+      if (isFollowingTouch) {
+        setTimeout(movePupils, 1000);
+        return;
+      }
+      
+      const maxX = 6; // Slightly increased for more natural look
+      const maxY = 4; // Slightly increased for more natural look
+      
+      // Random position within constraints - same for both eyes
+      const newX = (Math.random() * maxX * 2) - maxX;
+      const newY = (Math.random() * maxY * 2) - maxY;
+      
+      // Smooth transition to new position - both eyes together
+      eyes.forEach(eye => {
+        eye.pupil.style.transition = 'all 1.5s cubic-bezier(0.25, 0.1, 0.25, 1)';
+        eye.pupil.style.transform = `translate(${newX}px, ${newY}px)`;
+      });
+      
+      // Schedule next movement randomly between 2-4 seconds (more natural timing)
+      setTimeout(movePupils, Math.random() * 2000 + 2000);
+    }
+    
+    // Function to make eyes follow touch/click
+    function followTouch(x, y) {
+      isFollowingTouch = true;
+      
+      // Clear any existing timeout
+      if (touchTimeout) {
+        clearTimeout(touchTimeout);
+      }
+      
+      eyes.forEach(eye => {
+        const rect = eye.container.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
+        const deltaX = (x - centerX) / 25; // More natural movement
+        const deltaY = (y - centerY) / 25;
+        
+        // Constrain movement to eye boundaries
+        const maxX = 6;
+        const maxY = 4;
+        const constrainedX = Math.max(-maxX, Math.min(maxX, deltaX));
+        const constrainedY = Math.max(-maxY, Math.min(maxY, deltaY));
+        
+        eye.pupil.style.transition = 'all 0.4s ease';
+        eye.pupil.style.transform = `translate(${constrainedX}px, ${constrainedY}px)`;
+      });
+      
+      // Set timeout to return to natural movement after 2 seconds of no interaction
+      touchTimeout = setTimeout(() => {
+        isFollowingTouch = false;
+      }, 2000);
+    }
+    
+    // Add event listeners for mouse movement
+    document.addEventListener('mousemove', (e) => {
+      followTouch(e.clientX, e.clientY);
+    });
+    
+    // Add event listeners for touch movement
+    document.addEventListener('touchmove', (e) => {
+      e.preventDefault();
+      const touch = e.touches[0];
+      followTouch(touch.clientX, touch.clientY);
+    });
+    
+    // Add event listeners for clicks/taps
+    document.addEventListener('click', (e) => {
+      followTouch(e.clientX, e.clientY);
+    });
+    
+    // Start animations for both eyes
+    randomBlink();
+    movePupils();
+  }
+  
+  // Initialize eye animation when page loads
+  animateEyes();
+
+  function updateDateTime() {
+    const e = new Date;
+    document.getElementById('datetime').textContent = e.toLocaleString('en-US', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: !0
+    }),
+    document.getElementById('current-time').textContent = 'Current Time: ' + e.toLocaleTimeString();
+  }
+  
+  setInterval(updateDateTime, 1e3), updateDateTime();
+  
+  const e = document.getElementById('theme-toggle'),
+        t = e.querySelector('.toggle-circle'),
+        n = document.getElementById('click-sound');
+  
+  localStorage.getItem('theme') === 'dark' && document.body.classList.add('dark'),
+  e.addEventListener('click', () => {
+    document.body.classList.toggle('dark'),
+    n.currentTime = 0,
+    n.play(),
+    navigator.vibrate && navigator.vibrate(80),
+    localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+  });
+  
+  const o = document.querySelector('.scanner-line'),
+        i = document.querySelector('.close-portal'),
+        d = document.getElementById('portal-sound'),
+        c = document.getElementById('scan-sound'),
+        timeTravelSound = document.getElementById('time-travel-sound'),
+        futuristicSound = document.getElementById('futuristic-sound'),
+        starSound = document.getElementById('star-sound'),
+        funnySound = document.getElementById('funny-sound');
+  
+  let a = !1;
+  
+  document.addEventListener('click', e => {
+    if (!e.target.closest('a, button, input, .toggle-btn, .time-travel-btn, .eyes-box')) {
+      const t = Date.now(),
+            n = window.lastPortalTap || 0;
+      window.lastPortalTap = t,
+      t - n < 500 ? window.tapCount = (window.tapCount || 0) + 1 : window.tapCount = 1,
+      3 === window.tapCount && (window.tapCount = 0, a ? l() : s());
+    }
+  });
+  
+  function s() {
+    a = !0,
+    o.style.opacity = '1',
+    o.classList.remove('close'),
+    o.classList.add('open'),
+    c.currentTime = 0,
+    c.play(),
+    setTimeout(() => {
+      d.currentTime = 0,
+      d.play()
+    }, 600),
+    setTimeout(() => {
+      document.body.classList.add('portal-version')
+    }, 600),
+    setTimeout(() => {
+      i.style.display = 'block',
+      setTimeout(() => {
+        i.style.opacity = '1'
+      }, 50)
+    }, 1200),
+    navigator.vibrate && navigator.vibrate([100, 50, 100]);
+  }
+  
+  function l() {
+    a = !1,
+    i.style.opacity = '0',
+    setTimeout(() => {
+      i.style.display = 'none'
+    }, 300),
+    o.style.opacity = '1',
+    o.classList.remove('open'),
+    o.classList.add('close'),
+    c.currentTime = 0,
+    c.play(),
+    setTimeout(() => {
+      d.currentTime = 0,
+      d.play()
+    }, 600),
+    setTimeout(() => {
+      document.body.classList.remove('portal-version')
+    }, 600),
+    navigator.vibrate && navigator.vibrate(100);
+  }
+  
+  i.addEventListener('click', l);
+  
+  // Time Travel Functionality
+  function setEra(era) {
+    // Prevent rapid clicking
+    if (document.body.classList.contains('changing-era')) return;
+    document.body.classList.add('changing-era');
+    
+    // Play appropriate sound
+    if (era === '2050s') {
+      futuristicSound.currentTime = 0;
+      futuristicSound.play();
+    } else {
+      timeTravelSound.currentTime = 0;
+      timeTravelSound.play();
+    }
+    
+    // Add scanner effect for visual feedback
+    o.style.opacity = '1';
+    o.classList.remove('close');
+    o.classList.add('open');
+    
+    // Start theme transition
+    setTimeout(() => {
+      // Remove all era classes
+      document.body.classList.remove('era-2050s', 'era-2040s', 'era-2030s');
+      
+      // Remove holographic effects
+      document.querySelectorAll('.section, .hero').forEach(el => {
+        el.classList.remove('holographic-effect');
+      });
+      
+      // Apply new era
+      if (era !== 'modern') {
+        document.body.classList.add(`era-${era}`);
+        
+        // Add holographic effect to sections in 2050 mode
+        if (era === '2050s') {
+          document.querySelectorAll('.section, .hero, .store-timings').forEach(el => {
+            el.classList.add('holographic-effect');
+          });
+        }
+      }
+      
+      // Complete scanner animation
+      setTimeout(() => {
+        o.classList.remove('open');
+        o.classList.add('close');
+        document.body.classList.remove('changing-era');
+      }, 600);
+    }, 100);
+    
+    // Vibrate if supported
+    navigator.vibrate && navigator.vibrate([100, 50, 100]);
+  }
+  
+  // Store Status Functionality
+  function checkStoreStatus() {
+    const now = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+    const currentTime = new Date(now);
+    const currentHour = currentTime.getHours();
+    const currentMinute = currentTime.getMinutes();
+    const status = document.getElementById("store-status");
+
+    // Store opens at 6:00 AM (6:00) and closes at 10:00 PM (22:00)
+    const openHour = 6;
+    const openMinute = 0;
+    const closeHour = 22;
+    const closeMinute = 0;
+
+    const isOpen = (
+      (currentHour > openHour || (currentHour === openHour && currentMinute >= openMinute)) &&
+      (currentHour < closeHour || (currentHour === closeHour && currentMinute <= closeMinute))
+    );
+
+    if (isOpen) {
+      status.innerText = "🟢 Open Now";
+      status.style.color = "#28a745";
+    } else {
+      status.innerText = "🔴 Closed";
+      status.style.color = "#dc3545";
+    }
+  }
+  
+  // Initialize store status and update every minute
+  checkStoreStatus();
+  setInterval(checkStoreStatus, 60000);
+  
+  // 5-Star Rating System Functionality - FIXED
+  document.addEventListener('DOMContentLoaded', function() {
+    const stars = document.querySelectorAll('.star');
+    const greetingModalStars = document.getElementById('greeting-modal-stars');
+    const funnyModalStars = document.getElementById('funny-modal-stars');
+    const closeModals = document.querySelectorAll('.close-modal');
+    const modalButtons = document.querySelectorAll('.modal-button');
+    const starSound = document.getElementById('star-sound');
+    const funnySound = document.getElementById('funny-sound');
+    
+    // Track if 5th star was clicked
+    let fifthStarClicked = false;
+    
+    // Function to create text sprinkles
+    function createTextSprinkles(element) {
+      const textRect = element.getBoundingClientRect();
+      const sprinkleText = element.closest('.sprinkle-text');
+      
+      for (let i = 0; i < 10; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'text-confetti';
+        
+        // Random position within text bounds
+        const left = Math.random() * textRect.width;
+        
+        // Random colors
+        const colors = [
+          'linear-gradient(45deg, #ff0000, #ff6666)',
+          'linear-gradient(45deg, #00ff00, #66ff66)',
+          'linear-gradient(45deg, #0000ff, #6666ff)',
+          'linear-gradient(45deg, #ffff00, #ffff66)',
+          'linear-gradient(45deg, #ff00ff, #ff66ff)'
+        ];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        
+        confetti.style.left = `${left}px`;
+        confetti.style.background = randomColor;
+        confetti.style.animationDelay = `${Math.random() * 0.5}s`;
+        confetti.style.animationDuration = `${1 + Math.random() * 1}s`;
+        
+        // Random shape
+        const shapes = [
+          'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)',
+          'polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%)',
+          'border-radius: 50%',
+          'polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%)',
+          'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
+        ];
+        const randomShape = shapes[Math.floor(Math.random() * shapes.length)];
+        
+        if (randomShape.includes('border-radius')) {
+          confetti.style.borderRadius = '50%';
+        } else {
+          confetti.style.clipPath = randomShape;
+        }
+        
+        sprinkleText.appendChild(confetti);
+        
+        // Remove confetti after animation
+        setTimeout(() => {
+          if (confetti.parentNode) {
+            confetti.parentNode.removeChild(confetti);
+          }
+        }, 2000);
+      }
+    }
+    
+    // FIXED: When clicking 5th star, ALL stars should stay colored even after closing popup
+    stars.forEach(star => {
+      star.addEventListener('click', function() {
+        const value = parseInt(this.getAttribute('data-value'));
+        
+        // Hide any currently open modals
+        greetingModalStars.style.display = 'none';
+        funnyModalStars.style.display = 'none';
+        greetingModalStars.classList.remove('active');
+        funnyModalStars.classList.remove('active');
+        
+        if (value === 5) {
+          // Make ALL stars active and colored - FIXED
+          stars.forEach(s => {
+            s.classList.add('active');
+            s.textContent = '★';
+          });
+          
+          // Set flag that 5th star was clicked
+          fifthStarClicked = true;
+          
+          // Play celebration sound
+          starSound.currentTime = 0;
+          starSound.play();
+          
+          // Show greeting modal on stars and hide stars
+          greetingModalStars.style.display = 'flex';
+          greetingModalStars.classList.add('active');
+          
+          // Create text sprinkles on the thank you text
+          const thankYouText = document.querySelector('.greeting-modal h2');
+          createTextSprinkles(thankYouText);
+          
+          // Vibrate if supported
+          navigator.vibrate && navigator.vibrate([100, 50, 100, 50, 100]);
+        } else {
+          // Only show funny modal if 5th star hasn't been clicked yet
+          if (!fifthStarClicked) {
+            // Play funny sound
+            funnySound.currentTime = 0;
+            funnySound.play();
+            
+            // Show funny modal on stars and hide stars
+            funnyModalStars.style.display = 'flex';
+            funnyModalStars.classList.add('active');
+            
+            // Vibrate briefly
+            navigator.vibrate && navigator.vibrate(200);
+          } else {
+            // If 5th star was already clicked, just show a message
+            stars.forEach(s => {
+              s.classList.add('active');
+              s.textContent = '★';
+            });
+          }
+        }
+      });
+    });
+    
+    // Close modals when X is clicked
+    closeModals.forEach(closeBtn => {
+      closeBtn.addEventListener('click', function() {
+        greetingModalStars.style.display = 'none';
+        funnyModalStars.style.display = 'none';
+        greetingModalStars.classList.remove('active');
+        funnyModalStars.classList.remove('active');
+        
+        // DO NOT reset stars if 5th star was clicked - FIXED
+        if (!fifthStarClicked) {
+          stars.forEach(star => {
+            star.classList.remove('active');
+            star.textContent = '☆';
+          });
+        }
+      });
+    });
+    
+    // Close modals when buttons are clicked
+    modalButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        greetingModalStars.style.display = 'none';
+        funnyModalStars.style.display = 'none';
+        greetingModalStars.classList.remove('active');
+        funnyModalStars.classList.remove('active');
+        
+        // DO NOT reset stars if 5th star was clicked - FIXED
+        if (!fifthStarClicked) {
+          stars.forEach(star => {
+            star.classList.remove('active');
+            star.textContent = '☆';
+          });
+        }
+        
+        // Special handling for "Try the 5th Star" button
+        if (this.textContent.includes('5th Star')) {
+          // Scroll to make 5th star visible
+          document.querySelector('.rating-container').scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center' 
+          });
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>
