@@ -2009,6 +2009,12 @@
     const starSound = document.getElementById('star-sound');
     const funnySound = document.getElementById('funny-sound');
     
+    // IMPORTANT: Hide popups immediately when page loads
+    greetingModalStars.style.display = 'none';
+    funnyModalStars.style.display = 'none';
+    greetingModalStars.classList.remove('active');
+    funnyModalStars.classList.remove('active');
+    
     // Track if 5th star was clicked
     let fifthStarClicked = false;
     
