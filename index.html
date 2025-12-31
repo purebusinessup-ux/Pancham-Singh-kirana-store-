@@ -122,6 +122,36 @@
     font-family: 'Verdana', sans-serif;
   }
   
+  /* NEW YEAR THEME VARIABLES */
+  body.new-year-theme {
+    --new-year-gold: #FFD700;
+    --new-year-silver: #C0C0C0;
+    --new-year-sparkle: #FFFACD;
+    --new-year-red: #B22222;
+    --new-year-green: #006400;
+    --new-year-bg: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%);
+    --new-year-text: #FFD700;
+    --new-year-glow: rgba(255, 215, 0, 0.7);
+    
+    --bg-color: #0a0a1a;
+    --text-color: var(--new-year-text);
+    --header-bg: linear-gradient(90deg, #B22222, #FFD700, #006400);
+    --footer-bg: #0a0a1a;
+    --footer-color: #C0C0C0;
+    --scrolling-bg: #B22222;
+    --scrolling-text: #FFD700;
+    --timings-bg: rgba(26, 26, 46, 0.9);
+    --timings-text: #FFD700;
+    --timings-border: #FFD700;
+    --glow-primary: rgba(255, 215, 0, 0.8);
+    --glow-secondary: rgba(178, 34, 34, 0.6);
+    --glass-effect: rgba(255, 215, 0, 0.15);
+    font-family: 'Poppins', sans-serif;
+    background: var(--new-year-bg);
+    position: relative;
+    overflow-x: hidden;
+  }
+  
   body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
@@ -150,6 +180,374 @@
     z-index: -1;
     pointer-events: none;
     transition: all 0.8s ease;
+  }
+  
+  /* NEW YEAR ELEMENTS */
+  /* FIREWORKS BACKGROUND */
+  .fireworks-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+  }
+  
+  .firework {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    animation: firework-explosion 2s ease-out forwards;
+    opacity: 0;
+  }
+  
+  @keyframes firework-explosion {
+    0% {
+      transform: translateY(100vh) scale(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    30% {
+      transform: translateY(30vh) scale(1);
+    }
+    100% {
+      transform: translateY(0) scale(10);
+      opacity: 0;
+    }
+  }
+  
+  /* NEW YEAR DECORATIONS */
+  .new-year-decoration {
+    position: fixed;
+    z-index: -1;
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  
+  .decoration-1 {
+    top: 10%;
+    left: 5%;
+    font-size: 40px;
+    animation: float 6s ease-in-out infinite;
+    color: #FFD700;
+  }
+  
+  .decoration-2 {
+    top: 20%;
+    right: 8%;
+    font-size: 35px;
+    animation: float 7s ease-in-out infinite 0.5s;
+    color: #C0C0C0;
+  }
+  
+  .decoration-3 {
+    bottom: 15%;
+    left: 10%;
+    font-size: 45px;
+    animation: float 8s ease-in-out infinite 1s;
+    color: #B22222;
+  }
+  
+  .decoration-4 {
+    bottom: 25%;
+    right: 5%;
+    font-size: 30px;
+    animation: float 5s ease-in-out infinite 1.5s;
+    color: #006400;
+  }
+  
+  /* SNOWFLAKES ANIMATION */
+  .snowflakes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  .snowflake {
+    position: absolute;
+    top: -20px;
+    color: white;
+    font-size: 20px;
+    opacity: 0.8;
+    animation: snowfall linear infinite;
+  }
+  
+  @keyframes snowfall {
+    to {
+      transform: translateY(100vh) rotate(360deg);
+    }
+  }
+  
+  /* NEW YEAR COUNTDOWN */
+  .new-year-countdown {
+    position: relative;
+    background: linear-gradient(135deg, rgba(178, 34, 34, 0.9), rgba(255, 215, 0, 0.8));
+    border-radius: 20px;
+    padding: 20px;
+    margin: 30px auto;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4),
+                0 0 50px rgba(178, 34, 34, 0.4);
+    border: 3px solid #FFD700;
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes glow {
+    from {
+      box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4),
+                  0 0 50px rgba(178, 34, 34, 0.4);
+    }
+    to {
+      box-shadow: 0 10px 40px rgba(255, 215, 0, 0.6),
+                  0 0 70px rgba(178, 34, 34, 0.6);
+    }
+  }
+  
+  .countdown-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 15px;
+  }
+  
+  .countdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .countdown-item {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    padding: 15px;
+    min-width: 80px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  }
+  
+  .countdown-number {
+    font-size: 32px;
+    font-weight: bold;
+    color: #FFD700;
+    text-shadow: 0 0 10px #FFD700;
+  }
+  
+  .countdown-label {
+    font-size: 14px;
+    color: white;
+    margin-top: 5px;
+  }
+  
+  /* NEW YEAR MESSAGE */
+  .new-year-message {
+    position: relative;
+    background: linear-gradient(135deg, rgba(0, 100, 0, 0.9), rgba(255, 215, 0, 0.8));
+    border-radius: 20px;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 800px;
+    text-align: center;
+    border: 3px solid #FFD700;
+    box-shadow: 0 10px 30px rgba(0, 100, 0, 0.4);
+    overflow: hidden;
+  }
+  
+  .new-year-message::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transform: rotate(45deg);
+    animation: shine 3s linear infinite;
+  }
+  
+  .new-year-message h2 {
+    font-size: 28px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 15px;
+  }
+  
+  .new-year-message p {
+    font-size: 18px;
+    color: white;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  
+  /* NEW YEAR SPECIAL OFFERS */
+  .new-year-offers {
+    position: relative;
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(10, 10, 26, 0.9));
+    border-radius: 20px;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 800px;
+    border: 3px solid #FFD700;
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+  }
+  
+  .offers-title {
+    font-size: 24px;
+    color: #FFD700;
+    text-align: center;
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px #FFD700;
+  }
+  
+  .offer-item {
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 15px;
+    padding: 15px;
+    margin: 10px 0;
+    border-left: 5px solid #FFD700;
+    transition: all 0.3s ease;
+  }
+  
+  .offer-item:hover {
+    transform: translateX(10px);
+    background: rgba(255, 215, 0, 0.2);
+  }
+  
+  .offer-icon {
+    color: #FFD700;
+    font-size: 20px;
+    margin-right: 10px;
+  }
+  
+  /* NEW YEAR BUTTON STYLES */
+  .new-year-btn {
+    background: linear-gradient(45deg, #B22222, #FFD700);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(178, 34, 34, 0.4);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .new-year-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+  }
+  
+  .new-year-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    transition: left 0.5s;
+  }
+  
+  .new-year-btn:hover::before {
+    left: 100%;
+  }
+  
+  /* NEW YEAR THEME TOGGLE BUTTON */
+  .new-year-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+  }
+  
+  .new-year-toggle-btn {
+    background: linear-gradient(45deg, #B22222, #FFD700);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(178, 34, 34, 0.4);
+    transition: all 0.3s ease;
+  }
+  
+  .new-year-toggle-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+  }
+  
+  /* ENHANCED NEW YEAR STYLES FOR EXISTING ELEMENTS */
+  body.new-year-theme .hero {
+    background: linear-gradient(135deg, rgba(178, 34, 34, 0.2), rgba(255, 215, 0, 0.1));
+    border: 2px solid #FFD700;
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+  }
+  
+  body.new-year-theme .section {
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(10, 10, 26, 0.8));
+    border: 2px solid #FFD700;
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+  }
+  
+  body.new-year-theme .store-timings {
+    background: linear-gradient(135deg, rgba(0, 100, 0, 0.2), rgba(255, 215, 0, 0.1));
+    border: 2px solid #FFD700;
+    box-shadow: 0 10px 30px rgba(0, 100, 0, 0.2);
+  }
+  
+  body.new-year-theme .rating-container {
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(10, 10, 26, 0.9));
+    border: 3px solid #FFD700;
+    box-shadow: 0 15px 35px rgba(255, 215, 0, 0.3);
+  }
+  
+  body.new-year-theme .email-container {
+    background: linear-gradient(135deg, rgba(178, 34, 34, 0.9), rgba(255, 215, 0, 0.8));
+    border: 3px solid #FFD700;
+    box-shadow: 0 20px 50px rgba(178, 34, 34, 0.4);
+  }
+  
+  /* ANIMATIONS */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  @keyframes shine {
+    0% {
+      transform: rotate(45deg) translateX(-100%);
+    }
+    100% {
+      transform: rotate(45deg) translateX(100%);
+    }
   }
   
   /* ENHANCED GLOSSY CONTAINERS */
@@ -349,11 +747,6 @@
     justify-content: center;
     align-items: flex-start;
     box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.6);
-  }
-  
-  @keyframes shine {
-    0% { transform: rotate(30deg) translateX(-100%); }
-    100% { transform: rotate(30deg) translateX(100%); }
   }
   
   /* TIME TRAVEL CONTROLS - SUPER GLOSSY */
@@ -1517,6 +1910,22 @@
     .phone-icon {
       animation: vibrate 0.4s infinite alternate;
     }
+    .new-year-countdown,
+    .new-year-message,
+    .new-year-offers {
+      margin: 20px 10px;
+      padding: 15px;
+    }
+    .countdown-container {
+      gap: 10px;
+    }
+    .countdown-item {
+      min-width: 70px;
+      padding: 10px;
+    }
+    .countdown-number {
+      font-size: 24px;
+    }
   }
 
   @media (max-width: 480px) {
@@ -1532,6 +1941,10 @@
     }
     .phone-icon {
       animation: vibrate 0.5s infinite alternate;
+    }
+    .new-year-toggle-btn {
+      padding: 8px 15px;
+      font-size: 14px;
     }
   }
 
@@ -2005,11 +2418,63 @@
       transform: scale(1);
     }
   }
+  
+  /* NOTIFICATION STYLES */
+  .notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(45deg, #B22222, #FFD700);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 10px;
+    border: 2px solid #FFD700;
+    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.5);
+    z-index: 10000;
+    font-weight: bold;
+    text-align: center;
+    animation: fadeIn 0.3s ease-out;
+    max-width: 300px;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+  }
 </style>
 </head>
 <body>
 <!-- Add grid overlay -->
 <div class="grid-overlay"></div>
+
+<!-- New Year Theme Elements -->
+<div class="fireworks-container" id="fireworks"></div>
+<div class="snowflakes" id="snowflakes"></div>
+<div class="new-year-decoration decoration-1">🎉</div>
+<div class="new-year-decoration decoration-2">✨</div>
+<div class="new-year-decoration decoration-3">🎊</div>
+<div class="new-year-decoration decoration-4">🥂</div>
+
+<div class="new-year-toggle">
+  <button class="new-year-toggle-btn" onclick="toggleNewYearTheme()">🎆 New Year Mode</button>
+</div>
 
 <!-- Time Travel Controls -->
 <div class="time-travel-container">
@@ -2053,6 +2518,37 @@
 </div>
 <div class="scanner-overlay"><div class="scanner-line"></div></div>
 <button class="close-portal">✕ Close Portal</button>
+
+<!-- New Year Countdown Section -->
+<div class="new-year-countdown">
+  <div class="countdown-title">🎉 New Year Countdown 🎉</div>
+  <div class="countdown-container">
+    <div class="countdown-item">
+      <div class="countdown-number" id="days">00</div>
+      <div class="countdown-label">Days</div>
+    </div>
+    <div class="countdown-item">
+      <div class="countdown-number" id="hours">00</div>
+      <div class="countdown-label">Hours</div>
+    </div>
+    <div class="countdown-item">
+      <div class="countdown-number" id="minutes">00</div>
+      <div class="countdown-label">Minutes</div>
+    </div>
+    <div class="countdown-item">
+      <div class="countdown-number" id="seconds">00</div>
+      <div class="countdown-label">Seconds</div>
+    </div>
+  </div>
+</div>
+
+<!-- New Year Message Section -->
+<div class="new-year-message">
+  <h2>🎊 Happy New Year 2026! 🎊</h2>
+  <p>From all of us at Pancham Singh Kirana Store, we wish you a prosperous and joyful New Year!</p>
+  <p>May this year bring you happiness, success, and good health!</p>
+  <button class="new-year-btn" onclick="showNewYearWishes()">🎇 Get New Year Wishes</button>
+</div>
 
 <div class="datetime-container">
   <span class="clock-icon">🕒</span>
@@ -2163,7 +2659,9 @@
       </div>
       
       <p class="email-description">
-        We're always open to explore new business ideas </p>
+        We're always open to new business opportunities, wholesale partnerships, and collaborations. 
+        Our team responds within 24-48 hours to all professional inquiries.
+      </p>
       
       <div class="email-features">
         <div class="email-feature">
@@ -2192,6 +2690,10 @@
 <audio id="futuristic-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-sci-fi-positronic-wave-275.mp3" preload="auto"></audio>
 <audio id="star-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-winning-chimes-2015.mp3" preload="auto"></audio>
 <audio id="funny-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-funny-cartoon-jump-465.mp3" preload="auto"></audio>
+<!-- New Year Sound Effects -->
+<audio id="new-year-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-party-horn-sound-2927.mp3" preload="auto"></audio>
+<audio id="firework-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-firework-explosion-with-whistle-3097.mp3" preload="auto"></audio>
+<audio id="celebration-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-party-horn-with-confetti-1941.mp3" preload="auto"></audio>
 
 <script>
   // IMPROVED Cute, Innocent Eye Animation Functionality for Two Eyes
@@ -2316,6 +2818,7 @@
   // Initialize eye animation when page loads
   animateEyes();
 
+  // Date and Time Functionality
   function updateDateTime() {
     const e = new Date;
     document.getElementById('datetime').textContent = e.toLocaleString('en-US', {
@@ -2327,91 +2830,94 @@
       minute: '2-digit',
       second: '2-digit',
       hour12: !0
-    }),
+    });
     document.getElementById('current-time').textContent = 'Current Time: ' + e.toLocaleTimeString();
   }
   
-  setInterval(updateDateTime, 1e3), updateDateTime();
+  setInterval(updateDateTime, 1000);
+  updateDateTime();
   
-  const e = document.getElementById('theme-toggle'),
-        t = e.querySelector('.toggle-circle'),
-        n = document.getElementById('click-sound');
+  // Dark/Light Theme Toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  const toggleCircle = themeToggle.querySelector('.toggle-circle');
+  const clickSound = document.getElementById('click-sound');
   
-  localStorage.getItem('theme') === 'dark' && document.body.classList.add('dark'),
-  e.addEventListener('click', () => {
-    document.body.classList.toggle('dark'),
-    n.currentTime = 0,
-    n.play(),
-    navigator.vibrate && navigator.vibrate(80),
+  localStorage.getItem('theme') === 'dark' && document.body.classList.add('dark');
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    clickSound.currentTime = 0;
+    clickSound.play();
+    navigator.vibrate && navigator.vibrate(80);
     localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
   });
   
-  const o = document.querySelector('.scanner-line'),
-        i = document.querySelector('.close-portal'),
-        d = document.getElementById('portal-sound'),
-        c = document.getElementById('scan-sound'),
-        timeTravelSound = document.getElementById('time-travel-sound'),
-        futuristicSound = document.getElementById('futuristic-sound'),
-        starSound = document.getElementById('star-sound'),
-        funnySound = document.getElementById('funny-sound');
+  // Portal/Scanner Functionality
+  const scannerLine = document.querySelector('.scanner-line');
+  const closePortal = document.querySelector('.close-portal');
+  const portalSound = document.getElementById('portal-sound');
+  const scanSound = document.getElementById('scan-sound');
+  const timeTravelSound = document.getElementById('time-travel-sound');
+  const futuristicSound = document.getElementById('futuristic-sound');
+  const starSound = document.getElementById('star-sound');
+  const funnySound = document.getElementById('funny-sound');
   
-  let a = !1;
+  let portalActive = false;
   
   document.addEventListener('click', e => {
-    if (!e.target.closest('a, button, input, .toggle-btn, .time-travel-btn, .eyes-box')) {
-      const t = Date.now(),
-            n = window.lastPortalTap || 0;
-      window.lastPortalTap = t,
-      t - n < 500 ? window.tapCount = (window.tapCount || 0) + 1 : window.tapCount = 1,
-      3 === window.tapCount && (window.tapCount = 0, a ? l() : s());
+    if (!e.target.closest('a, button, input, .toggle-btn, .time-travel-btn, .eyes-box, .new-year-toggle-btn')) {
+      const currentTime = Date.now();
+      const lastPortalTap = window.lastPortalTap || 0;
+      window.lastPortalTap = currentTime;
+      currentTime - lastPortalTap < 500 ? window.tapCount = (window.tapCount || 0) + 1 : window.tapCount = 1;
+      3 === window.tapCount && (window.tapCount = 0, portalActive ? closePortalFunc() : openPortalFunc());
     }
   });
   
-  function s() {
-    a = !0,
-    o.style.opacity = '1',
-    o.classList.remove('close'),
-    o.classList.add('open'),
-    c.currentTime = 0,
-    c.play(),
+  function openPortalFunc() {
+    portalActive = true;
+    scannerLine.style.opacity = '1';
+    scannerLine.classList.remove('close');
+    scannerLine.classList.add('open');
+    scanSound.currentTime = 0;
+    scanSound.play();
     setTimeout(() => {
-      d.currentTime = 0,
-      d.play()
-    }, 600),
+      portalSound.currentTime = 0;
+      portalSound.play();
+    }, 600);
     setTimeout(() => {
-      document.body.classList.add('portal-version')
-    }, 600),
+      document.body.classList.add('portal-version');
+    }, 600);
     setTimeout(() => {
-      i.style.display = 'block',
+      closePortal.style.display = 'block';
       setTimeout(() => {
-        i.style.opacity = '1'
-      }, 50)
-    }, 1200),
+        closePortal.style.opacity = '1';
+      }, 50);
+    }, 1200);
     navigator.vibrate && navigator.vibrate([100, 50, 100]);
   }
   
-  function l() {
-    a = !1,
-    i.style.opacity = '0',
+  function closePortalFunc() {
+    portalActive = false;
+    closePortal.style.opacity = '0';
     setTimeout(() => {
-      i.style.display = 'none'
-    }, 300),
-    o.style.opacity = '1',
-    o.classList.remove('open'),
-    o.classList.add('close'),
-    c.currentTime = 0,
-    c.play(),
+      closePortal.style.display = 'none';
+    }, 300);
+    scannerLine.style.opacity = '1';
+    scannerLine.classList.remove('open');
+    scannerLine.classList.add('close');
+    scanSound.currentTime = 0;
+    scanSound.play();
     setTimeout(() => {
-      d.currentTime = 0,
-      d.play()
-    }, 600),
+      portalSound.currentTime = 0;
+      portalSound.play();
+    }, 600);
     setTimeout(() => {
-      document.body.classList.remove('portal-version')
-    }, 600),
+      document.body.classList.remove('portal-version');
+    }, 600);
     navigator.vibrate && navigator.vibrate(100);
   }
   
-  i.addEventListener('click', l);
+  closePortal.addEventListener('click', closePortalFunc);
   
   // Time Travel Functionality
   function setEra(era) {
@@ -2429,9 +2935,9 @@
     }
     
     // Add scanner effect for visual feedback
-    o.style.opacity = '1';
-    o.classList.remove('close');
-    o.classList.add('open');
+    scannerLine.style.opacity = '1';
+    scannerLine.classList.remove('close');
+    scannerLine.classList.add('open');
     
     // Start theme transition
     setTimeout(() => {
@@ -2457,8 +2963,8 @@
       
       // Complete scanner animation
       setTimeout(() => {
-        o.classList.remove('open');
-        o.classList.add('close');
+        scannerLine.classList.remove('open');
+        scannerLine.classList.add('close');
         document.body.classList.remove('changing-era');
       }, 600);
     }, 100);
@@ -2509,7 +3015,7 @@
     const starSound = document.getElementById('star-sound');
     const funnySound = document.getElementById('funny-sound');
     
-    // IMPORTANT: Hide popups immediately when page loads
+    // Hide popups immediately when page loads
     greetingModalStars.style.display = 'none';
     funnyModalStars.style.display = 'none';
     greetingModalStars.classList.remove('active');
@@ -2572,7 +3078,7 @@
       }
     }
     
-    // FIXED: When clicking 5th star, ALL stars should stay colored even after closing popup
+    // When clicking 5th star, ALL stars should stay colored even after closing popup
     stars.forEach(star => {
       star.addEventListener('click', function() {
         const value = parseInt(this.getAttribute('data-value'));
@@ -2734,13 +3240,349 @@
     }, observerOptions);
     
     // Observe all sections for smooth reveal
-    document.querySelectorAll('.section, .hero, .store-timings, .rating-container, .email-contact-section').forEach(el => {
+    document.querySelectorAll('.section, .hero, .store-timings, .rating-container, .email-contact-section, .new-year-countdown, .new-year-message, .new-year-offers').forEach(el => {
       el.style.opacity = '0';
       el.style.transform = 'translateY(20px)';
       el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
       observer.observe(el);
     });
   });
+  
+  // ========== NEW YEAR THEME FUNCTIONALITY ==========
+  
+  // New Year Theme Variables
+  let newYearThemeActive = false;
+  let fireworksInterval;
+  let snowflakesInterval;
+  
+  // New Year Theme Toggle
+  function toggleNewYearTheme() {
+    const body = document.body;
+    const newYearSound = document.getElementById('new-year-sound');
+    const celebrationSound = document.getElementById('celebration-sound');
+    
+    if (!newYearThemeActive) {
+      // Activate New Year theme
+      body.classList.add('new-year-theme');
+      newYearThemeActive = true;
+      
+      // Play celebration sound
+      celebrationSound.currentTime = 0;
+      celebrationSound.play();
+      
+      // Start fireworks
+      startFireworks();
+      startSnowflakes();
+      
+      // Update button text
+      document.querySelector('.new-year-toggle-btn').textContent = '🎆 Normal Mode';
+      
+      // Show notification
+      showNotification('🎉 New Year Theme Activated! 🎉');
+      
+      // Vibrate if supported
+      navigator.vibrate && navigator.vibrate([100, 50, 100, 50, 100]);
+    } else {
+      // Deactivate New Year theme
+      body.classList.remove('new-year-theme');
+      newYearThemeActive = false;
+      
+      // Stop fireworks and snowflakes
+      stopFireworks();
+      stopSnowflakes();
+      
+      // Update button text
+      document.querySelector('.new-year-toggle-btn').textContent = '🎆 New Year Mode';
+      
+      // Show notification
+      showNotification('Returned to Normal Mode');
+    }
+  }
+  
+  // New Year Countdown
+  function updateCountdown() {
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    const nextYear = currentYear + 1;
+    const newYear = new Date(`January 1, ${nextYear} 00:00:00`);
+    
+    const diff = newYear - now;
+    
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    
+    document.getElementById('days').textContent = days.toString().padStart(2, '0');
+    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    
+    // Special effects when close to New Year
+    if (days === 0 && hours < 24) {
+      document.querySelector('.new-year-countdown').style.animationDuration = '1s';
+    }
+    
+    // Celebration when it's New Year
+    if (days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
+      celebrateNewYear();
+    }
+  }
+  
+  // Fireworks Animation
+  function startFireworks() {
+    const container = document.getElementById('fireworks');
+    const fireworkSound = document.getElementById('firework-sound');
+    
+    fireworksInterval = setInterval(() => {
+      // Create 3-5 fireworks at random positions
+      const fireworkCount = Math.floor(Math.random() * 3) + 3;
+      
+      for (let i = 0; i < fireworkCount; i++) {
+        const firework = document.createElement('div');
+        firework.className = 'firework';
+        
+        // Random position
+        const left = Math.random() * 100;
+        const top = Math.random() * 100;
+        
+        // Random color
+        const colors = [
+          '#FFD700', // Gold
+          '#B22222', // Red
+          '#006400', // Green
+          '#C0C0C0', // Silver
+          '#FF69B4', // Pink
+          '#4B0082'  // Indigo
+        ];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        
+        firework.style.left = `${left}%`;
+        firework.style.top = `${top}%`;
+        firework.style.backgroundColor = randomColor;
+        firework.style.boxShadow = `0 0 20px ${randomColor}`;
+        
+        container.appendChild(firework);
+        
+        // Remove after animation
+        setTimeout(() => {
+          if (firework.parentNode) {
+            firework.parentNode.removeChild(firework);
+          }
+        }, 2000);
+      }
+      
+      // Play firework sound occasionally
+      if (Math.random() > 0.7) {
+        fireworkSound.currentTime = 0;
+        fireworkSound.play();
+      }
+      
+    }, 1500); // Fireworks every 1.5 seconds
+  }
+  
+  function stopFireworks() {
+    clearInterval(fireworksInterval);
+    const container = document.getElementById('fireworks');
+    container.innerHTML = '';
+  }
+  
+  // Snowflakes Animation
+  function startSnowflakes() {
+    const container = document.getElementById('snowflakes');
+    
+    snowflakesInterval = setInterval(() => {
+      // Create 5-10 snowflakes
+      const snowflakeCount = Math.floor(Math.random() * 6) + 5;
+      
+      for (let i = 0; i < snowflakeCount; i++) {
+        const snowflake = document.createElement('div');
+        snowflake.className = 'snowflake';
+        snowflake.innerHTML = '❄';
+        
+        // Random position
+        const left = Math.random() * 100;
+        
+        // Random animation duration
+        const duration = Math.random() * 10 + 10;
+        
+        // Random size
+        const size = Math.random() * 15 + 10;
+        
+        // Random opacity
+        const opacity = Math.random() * 0.6 + 0.3;
+        
+        snowflake.style.left = `${left}%`;
+        snowflake.style.fontSize = `${size}px`;
+        snowflake.style.opacity = opacity;
+        snowflake.style.animationDuration = `${duration}s`;
+        snowflake.style.animationDelay = `${Math.random() * 5}s`;
+        
+        container.appendChild(snowflake);
+        
+        // Remove after animation
+        setTimeout(() => {
+          if (snowflake.parentNode) {
+            snowflake.parentNode.removeChild(snowflake);
+          }
+        }, duration * 1000);
+      }
+    }, 500); // New snowflakes every 0.5 seconds
+  }
+  
+  function stopSnowflakes() {
+    clearInterval(snowflakesInterval);
+    const container = document.getElementById('snowflakes');
+    container.innerHTML = '';
+  }
+  
+  // New Year Celebration
+  function celebrateNewYear() {
+    if (!newYearThemeActive) return;
+    
+    const newYearSound = document.getElementById('new-year-sound');
+    const celebrationSound = document.getElementById('celebration-sound');
+    
+    // Play celebration sounds
+    newYearSound.currentTime = 0;
+    newYearSound.play();
+    
+    celebrationSound.currentTime = 0;
+    celebrationSound.play();
+    
+    // Intense fireworks
+    for (let i = 0; i < 20; i++) {
+      setTimeout(() => {
+        createSpecialFirework();
+      }, i * 100);
+    }
+    
+    // Show special message
+    showNotification('🎊 HAPPY NEW YEAR! 🎊');
+    
+    // Vibrate if supported
+    navigator.vibrate && navigator.vibrate([200, 100, 200, 100, 200, 100, 200]);
+  }
+  
+  function createSpecialFirework() {
+    const container = document.getElementById('fireworks');
+    const firework = document.createElement('div');
+    firework.className = 'firework';
+    
+    const left = Math.random() * 100;
+    const top = Math.random() * 100;
+    const size = Math.random() * 8 + 4;
+    
+    // Rainbow colors
+    const colors = ['#FF0000', '#FF7F00', '#FFFF00', '#00FF00', '#0000FF', '#4B0082', '#8B00FF'];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    
+    firework.style.left = `${left}%`;
+    firework.style.top = `${top}%`;
+    firework.style.width = `${size}px`;
+    firework.style.height = `${size}px`;
+    firework.style.backgroundColor = randomColor;
+    firework.style.boxShadow = `0 0 30px ${randomColor}`;
+    
+    container.appendChild(firework);
+    
+    setTimeout(() => {
+      if (firework.parentNode) {
+        firework.parentNode.removeChild(firework);
+      }
+    }, 2000);
+  }
+  
+  // Show New Year Wishes
+  function showNewYearWishes() {
+    const messages = [
+      "🎉 May the New Year bring you joy, prosperity, and success! 🎉",
+      "✨ Wishing you a year filled with happiness and good fortune! ✨",
+      "🎊 May all your dreams come true this New Year! 🎊",
+      "🥂 Cheers to new beginnings and wonderful memories! 🥂",
+      "🎇 May your home be filled with laughter and love! 🎇",
+      "🌟 Wishing you health, wealth, and happiness! 🌟",
+      "🎯 May every day of the New Year be as bright as fireworks! 🎯"
+    ];
+    
+    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+    showNotification(randomMessage);
+    
+    // Play sound
+    const celebrationSound = document.getElementById('celebration-sound');
+    celebrationSound.currentTime = 0;
+    celebrationSound.play();
+    
+    // Create confetti effect
+    createConfetti();
+  }
+  
+  function createConfetti() {
+    const container = document.querySelector('.new-year-message');
+    
+    for (let i = 0; i < 30; i++) {
+      const confetti = document.createElement('div');
+      confetti.style.position = 'absolute';
+      confetti.style.width = '10px';
+      confetti.style.height = '10px';
+      confetti.style.borderRadius = '50%';
+      confetti.style.zIndex = '1000';
+      
+      // Random position
+      const left = Math.random() * 100;
+      
+      // Random color
+      const colors = ['#FFD700', '#B22222', '#006400', '#C0C0C0', '#FFFFFF'];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      
+      confetti.style.left = `${left}%`;
+      confetti.style.top = '100%';
+      confetti.style.backgroundColor = randomColor;
+      confetti.style.boxShadow = `0 0 10px ${randomColor}`;
+      
+      container.appendChild(confetti);
+      
+      // Animate confetti
+      confetti.animate([
+        { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+        { transform: `translateY(-${Math.random() * 200 + 100}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+      ], {
+        duration: Math.random() * 2000 + 1000,
+        easing: 'cubic-bezier(0.215, 0.610, 0.355, 1)'
+      });
+      
+      // Remove after animation
+      setTimeout(() => {
+        if (confetti.parentNode) {
+          confetti.parentNode.removeChild(confetti);
+        }
+      }, 3000);
+    }
+  }
+  
+  // Helper function to show notifications
+  function showNotification(message) {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.textContent = message;
+    
+    document.body.appendChild(notification);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+      notification.style.animation = 'fadeOut 0.3s ease-out';
+      setTimeout(() => {
+        if (notification.parentNode) {
+          notification.parentNode.removeChild(notification);
+        }
+      }, 300);
+    }, 3000);
+  }
+  
+  // Initialize countdown
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
 </script>
 </body>
 </html>
